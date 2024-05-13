@@ -1,37 +1,24 @@
 package application;
 
-import java.util.ArrayList;
-import java.util.Collections;
+
 
 //import application.Student.NotFilled;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -148,9 +135,15 @@ public class Main extends Application {
     		});
     		firstPageLayout.add(nextButton, 1, 6);
     		
-    		
+    		primaryStage.getIcons().add(new Image("file:///C:/Users/Ahmed/eclipse-workspace/project1/src/application/course_icn.jpeg"));
 
     		Scene scene1 = new Scene(firstPageLayout, 500, 350); // Increased height to accommodate header and logo
+    		 BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(240, 240, 240), null, null);
+    	        BackgroundFill backgroundFill2 = new BackgroundFill(Color.rgb(200, 200, 200), null, null);
+    	        Background background = new Background(backgroundFill, backgroundFill2);
+
+    	        // Setting the background to the pane
+    	        firstPageLayout.setBackground(background);
     		primaryStage.setScene(scene1);
     		return scene1;
 }
@@ -158,7 +151,7 @@ public class Main extends Application {
     	public void control() throws NotFilled , WrongGender,Idwrong {
         // Check if all fields are filled
     	if (nameField.getText().isEmpty() || idField.getText().isEmpty() ||
-                (maleRadioButton.isSelected() == false && femaleRadioButton.isSelected() == false && InstructorRadioBtn.isSelected()==true)) {
+                (maleRadioButton.isSelected() == false && femaleRadioButton.isSelected() == false &&( InstructorRadioBtn.isSelected()==true ||StudentRadioBtn.isSelected()==true))) {
             // Show an alert if any field is empty
     		throw new NotFilled("Please fill in all fields.");	
         } 
@@ -226,6 +219,7 @@ public class Main extends Application {
         courseSelectionLayout.add(MachineLearingCheckBox,1,1);
         courseSelectionLayout.add(JavacourseCheckBox,1,2);
         courseSelectionLayout.add(EmebeddedCourseCheckBox,1,3);
+        //handling
         MachineLearingCheckBox.setOnAction(event -> {showcourse1();});
         JavacourseCheckBox.setOnAction(event -> {showcourse2();});
         EmebeddedCourseCheckBox.setOnAction(event -> {showcourse3();});
@@ -234,16 +228,19 @@ public class Main extends Application {
         backButton.setOnAction(event -> login(primaryStage));
         courseSelectionLayout.add(backButton, 0, 4);
 
+        BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(240, 240, 240), null, null);
+        BackgroundFill backgroundFill2 = new BackgroundFill(Color.rgb(200, 200, 200), null, null);
+        Background background = new Background(backgroundFill, backgroundFill2);
 
+        // Setting the background to the pane
+        courseSelectionLayout.setBackground(background);
         Scene scene = new Scene(courseSelectionLayout, 300, 200);
         primaryStage.setScene(scene);
     }
     
     	private void showinstrucor1Page() {
         // Layout for the second page
-    		//String WELCOME = (doctor1.getName()+"MC COURSE");
-           // String numOfStudents = "NUMBER OF ENROLLED STUDENTS: 5500";
-           // String instructorBio = "Our esteemed instructor,";
+    		
 
             // Load instructor image
             Image instructorImage = new Image("file:///C:/Users/Ahmed/eclipse-workspace/project1/src/application/mc%20doctr.png"); // Replace "path/to/instructor_image.png" with the path to your instructor's image
@@ -296,7 +293,13 @@ public class Main extends Application {
             borderPane.setCenter(instructorInfoLayout);
             borderPane.setBottom(hbox);
             BorderPane.setMargin(imageView, new Insets(10));
+            
+            BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(240, 240, 240), null, null);
+	        BackgroundFill backgroundFill2 = new BackgroundFill(Color.rgb(200, 200, 200), null, null);
+	        Background background = new Background(backgroundFill, backgroundFill2);
 
+	        // Setting the background to the pane
+	        borderPane.setBackground(background);
             // Create the scene
             Scene scene = new Scene(borderPane, 800, 500);
 
@@ -306,9 +309,6 @@ public class Main extends Application {
     
     	private void showinstrucor3Page() {
         // Layout for the second page
-//    		String WELCOME = "DOCTOR 3  EMBEDDED COURSE";
-//            String numOfStudents = "NUMBER OF ENROLLED STUDENTS: 3500";
-//            String instructorBio = "Our esteemed instructor,";
 
             // Load instructor image
             Image instructorImage = new Image("file:///C:/Users/Ahmed/eclipse-workspace/project1/src/application/emb%20doc.png"); // Replace "path/to/instructor_image.png" with the path to your instructor's image
@@ -362,6 +362,12 @@ public class Main extends Application {
             borderPane.setBottom(hbox);
             BorderPane.setMargin(imageView, new Insets(10));
 
+            BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(240, 240, 240), null, null);
+	        BackgroundFill backgroundFill2 = new BackgroundFill(Color.rgb(200, 200, 200), null, null);
+	        Background background = new Background(backgroundFill, backgroundFill2);
+
+	        // Setting the background to the pane
+	        borderPane.setBackground(background);
             // Create the scene
             Scene scene = new Scene(borderPane, 800, 500);
 
@@ -424,6 +430,12 @@ public class Main extends Application {
             borderPane.setBottom(hbox);
             BorderPane.setMargin(imageView, new Insets(10));
 
+            BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(240, 240, 240), null, null);
+	        BackgroundFill backgroundFill2 = new BackgroundFill(Color.rgb(200, 200, 200), null, null);
+	        Background background = new Background(backgroundFill, backgroundFill2);
+
+	        // Setting the background to the pane
+	        borderPane.setBackground(background);
             // Create the scene
             Scene scene = new Scene(borderPane, 800, 500);
 
@@ -470,6 +482,12 @@ public class Main extends Application {
     	        gridPane.add(enrollButton, 1, 5); // Spanning two columns
     	        gridPane.add(imageView, 1, 0, 1, 5); // Image in the seco
     	        // Create the scene
+    	        BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(240, 240, 240), null, null);
+    	        BackgroundFill backgroundFill2 = new BackgroundFill(Color.rgb(200, 200, 200), null, null);
+    	        Background background = new Background(backgroundFill, backgroundFill2);
+
+    	        // Setting the background to the pane
+    	        gridPane.setBackground(background);
     	        Scene scene = new Scene(gridPane, 600, 400);
 
     	        // Set the stage
@@ -513,6 +531,12 @@ public class Main extends Application {
  	        gridPane.add(enrollButton, 1, 5); // Spanning two columns
  	        gridPane.add(imageView, 1, 0, 1, 5); // Image in the seco
  	        // Create the scene
+ 	       BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(240, 240, 240), null, null);
+	        BackgroundFill backgroundFill2 = new BackgroundFill(Color.rgb(200, 200, 200), null, null);
+	        Background background = new Background(backgroundFill, backgroundFill2);
+
+	        // Setting the background to the pane
+	        gridPane.setBackground(background);
  	        Scene scene = new Scene(gridPane, 600, 400);
 
  	        // Set the stage
@@ -523,7 +547,7 @@ public class Main extends Application {
 	        Label instructorLabel = new Label("Instructor:" + doctor3.getName() );
 	        Label durationLabel = new Label(EmebeddedCourse.getDuration() + "Hours");
 	        Label descriptionLabel = new Label("Description:");
-	        TextArea descriptionTextArea = new TextArea(EmebeddedCourse.getTitle());
+	        TextArea descriptionTextArea = new TextArea(EmebeddedCourse.getDescription());
 	        descriptionTextArea.setEditable(false);
 	        descriptionTextArea.setWrapText(true);
 
@@ -556,6 +580,12 @@ public class Main extends Application {
 	        gridPane.add(enrollButton, 1, 5); // Spanning two columns
 	        gridPane.add(imageView, 1, 0, 1, 5); // Image in the seco
 	        // Create the scene
+	        BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(240, 240, 240), null, null);
+	        BackgroundFill backgroundFill2 = new BackgroundFill(Color.rgb(200, 200, 200), null, null);
+	        Background background = new Background(backgroundFill, backgroundFill2);
+
+	        // Setting the background to the pane
+	        gridPane.setBackground(background);
 	        Scene scene = new Scene(gridPane, 600, 400);
 
 	        // Set the stage
@@ -603,6 +633,12 @@ public class Main extends Application {
         	 // Add all elements to the VBox
         	 quizVBox.getChildren().addAll(question1Box, question2Box,nextButton);
 
+        	 BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(240, 240, 240), null, null);
+ 	        BackgroundFill backgroundFill2 = new BackgroundFill(Color.rgb(200, 200, 200), null, null);
+ 	        Background background = new Background(backgroundFill, backgroundFill2);
+
+ 	        // Setting the background to the pane
+ 	       quizVBox.setBackground(background);
         	 // Create a new scene with the VBox
         	 Scene quizScene = new Scene(quizVBox);
 
@@ -656,6 +692,12 @@ public class Main extends Application {
             // Add all elements to the VBox
             quizVBox.getChildren().addAll(question1Box, question2Box, nextButton);
 
+            BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(240, 240, 240), null, null);
+ 	        BackgroundFill backgroundFill2 = new BackgroundFill(Color.rgb(200, 200, 200), null, null);
+ 	        Background background = new Background(backgroundFill, backgroundFill2);
+
+ 	        // Setting the background to the pane
+ 	       quizVBox.setBackground(background);
             // Create a new scene with the VBox
             Scene quizScene = new Scene(quizVBox);
 
@@ -706,6 +748,12 @@ public class Main extends Application {
        	 // Add all elements to the VBox
        	 quizVBox.getChildren().addAll(question1Box, question2Box,nextButton);
 
+       	 BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(240, 240, 240), null, null);
+	        BackgroundFill backgroundFill2 = new BackgroundFill(Color.rgb(200, 200, 200), null, null);
+	        Background background = new Background(backgroundFill, backgroundFill2);
+
+	        // Setting the background to the pane
+	       quizVBox.setBackground(background);
        	 // Create a new scene with the VBox
        	 Scene quizScene = new Scene(quizVBox);
 
